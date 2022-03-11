@@ -1,0 +1,60 @@
+{
+  "name": "did",
+  "version": "1.0.0",
+  "description": "Decentralized IDentifier",
+  "main": "index.js",
+  "directories": {
+    "test": "tests"
+  },
+  "scripts": {
+    "build": "make build-contract",
+    "wasm-strip": " ./wasm-strip target/wasm32-unknown-unknown/release/did.wasm",
+    "test": "echo \"Error: no test specified\" && exit 1",
+    
+    "deployDid": "node ./js/did/deploy_did.js",
+    "changeOwner": "node ./js/did/transact_changeOwner.js",
+    "addDelegate": "node ./js/did/transact_addDelegate.js",
+    "revokeDelegate": "node js/did/transact_revokeDelegate.js",
+    "setAttribute": "node ./js/did/transact_setAttribute.js",
+    "revokeAttribute": "node ./js/did/transact_revokeAttribute.js",
+    "readDid": "node ./js/did/read_did.js",
+
+    "deployDemovcregistry": "node ./js/demovcregistry/deploy_demovcregistry.js",
+    "issueDemoVC": "node ./js/demovcregistry/transact_issueDemoVC.js",
+    "changeVCRevocationFlag": "node ./js/demovcregistry/transact_changeVCRevocationFlag.js",
+    "sendVPRequest": "node ./js/demovcregistry/transact_sendVPRequest.js",
+    "registerVPResponse": "node ./js/demovcregistry/transact_registerVPResponse.js",
+    "changeVPRequestStatus": "node ./js/demovcregistry/transact_changeVPRequestStatus.js",
+    "readDemoVC": "node ./js/demovcregistry/read_demoVCRegistry.js",
+    
+    "deployVcregistry": "node ./js/vcregistry/deploy_vcregistry.js",
+    "issueVC": "node ./js/vcregistry/transact_issueVC.js",
+    "revokeVC": "node ./js/vcregistry/transact_revokeVC.js",
+    "reActivateVC": "node ./js/vcregistry/transact_reActivateVC.js",
+    "readVC": "node ./js/vcregistry/read_vcregistry.js",
+    "create": "node ./js/createTransaction.js",
+    "read": "node ./js/readState.js",
+    "testlocal": "make test"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/Pozzitron1337/casper_did.git"
+  },
+  "author": "",
+  "license": "ISC",
+  "bugs": {
+    "url": "https://github.com/Pozzitron1337/casper_did/issues"
+  },
+  "homepage": "https://github.com/Pozzitron1337/casper_did#readme",
+  "dependencies": {
+    "bs58": "^4.0.1",
+    "casper-js-sdk": "^2.0.0",
+    "esm": "^3.2.25",
+    "lodash": "^4.17.21",
+    "sleep": "^6.3.0"
+  },
+  "devDependencies": {
+    "chai": "^4.3.4",
+    "mocha": "^9.0.3"
+  }
+}

@@ -1,0 +1,20 @@
+[package]
+name = "did"
+version = "0.1.0"
+authors = ["Vakhtang Chikhladze <vchikhladze@vareger.com>","Mykhailo Tiutin <miha.tiutin@vareger.com>"]
+
+
+[dependencies]
+contract = { package = "casper-contract", version="1.1.1" }
+types = { package = "casper-types", version="1.1.1" }
+
+[[bin]]
+name = "did"
+path = "src/main.rs"
+bench = false
+doctest = false
+test = false
+edition = "2021"
+
+[features]
+default = ["contract/std", "types/std"]

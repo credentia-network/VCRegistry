@@ -1,0 +1,11 @@
+[workspace]
+
+members = [
+    "contract/did",
+    "contract/vcregistry",
+    "contract/demovcregistry",
+	"tests"
+]
+
+[profile.release]
+lto = true
