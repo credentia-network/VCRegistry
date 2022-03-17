@@ -16,7 +16,7 @@ use std::{io::SeekFrom, thread::AccessError};
 
 use contract::{contract_api::{runtime::{self, revert}, storage}, unwrap_or_revert::UnwrapOrRevert};
 
-use types::{ApiError, BlockTime, CLType, CLTyped, CLValue, Group, Parameter, RuntimeArgs, U256, U512, URef, account::{AccountHash, AccountHashBytes}, bytesrepr::{FromBytes, ToBytes}, contracts::{EntryPoint, EntryPointAccess, EntryPointType, 
+use types::{ApiError, BlockTime, CLType, CLTyped, CLValue, Group, Parameter, RuntimeArgs, U256, U512, URef, account::{AccountHash}, bytesrepr::{FromBytes, ToBytes}, contracts::{EntryPoint, EntryPointAccess, EntryPointType, 
             EntryPoints, NamedKeys}, runtime_args};
 
 fn _identity_owner(identity: AccountHash) -> AccountHash{ 

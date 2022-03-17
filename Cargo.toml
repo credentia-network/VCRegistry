@@ -2,7 +2,6 @@
 
 members = [
     "contract/did",
-    "contract/vcregistry",
     "contract/demovcregistry",
 	"tests"
 ]

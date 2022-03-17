@@ -3,7 +3,6 @@ prepare:
 
 build-contract:
 	cargo +nightly build --release -p did --target wasm32-unknown-unknown
-	cargo +nightly build --release -p vcregistry --target wasm32-unknown-unknown
 	cargo +nightly build --release -p demovcregistry --target wasm32-unknown-unknown
 	
 test-only:

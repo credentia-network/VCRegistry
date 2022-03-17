@@ -16,7 +16,7 @@ use std::{fmt::format, io::{Read, SeekFrom}, str::Bytes, thread::AccessError, ve
 use contract::{contract_api::{runtime::{self, revert}, storage, system::get_auction}, unwrap_or_revert::UnwrapOrRevert};
 
 use types::{ApiError, BlockTime, CLType, CLTyped, CLValue, Group, Parameter, RuntimeArgs, U256, U512, URef, 
-            account::{AccountHash, AccountHashBytes}, bytesrepr::{FromBytes, ToBytes, Error}, 
+            account::{AccountHash}, bytesrepr::{FromBytes, ToBytes, Error}, 
             contracts::{EntryPoint, EntryPointAccess, EntryPointType, EntryPoints, NamedKeys}, 
             runtime_args};
 
