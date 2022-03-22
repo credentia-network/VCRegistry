@@ -1,6 +1,6 @@
 # Casper DID Framework Smart Contracts
 
-Implementation of the Casper DID Registry contract as a part of the [Casper DID Method Specification](https://github.com/credentia-network/Docs/blob/main/Casper-did-method-spec.md) 
+Implementation of the Casper DID Registry contract as a part of the [Casper DID Method Specification](https://github.com/credentia-network/Docs/blob/main/readme/casper-did-method-spec.md) 
 
 ## Installing tookits and building the project
 
