@@ -26,4 +26,4 @@ Implementation of the Casper DID Registry contract as a part of the [Casper DID 
 
 ## Operating DID Regirstry smart contract
 
-Please follow [this detailed guide](https://github.com/credentia-network/Docs/blob/main/smart-contract.md) to learn how to operate with this DID Registry Contract
+Please follow [this detailed guide](https://github.com/credentia-network/Docs/blob/main/readme/smart-contract.md) to learn how to operate with this DID Registry Contract
