@@ -3,7 +3,8 @@
 members = [
     "contract/did",
     "contract/demovcregistry",
-	"tests"
+	"tests/did",
+    "tests/demovcregistry"
 ]
 
 [profile.release]
