@@ -1,7 +1,11 @@
+#![allow(unused_imports)]
+#![allow(non_snake_case)]
+
+use std::thread::AccessError;
 
 use casper_engine_test_support::{Code, SessionBuilder, TestContext, TestContextBuilder};
 
-use crate::casper_types::{
+use casper_types::{
     account::AccountHash,
     bytesrepr::{FromBytes, ToBytes},
     runtime_args, AsymmetricType, CLTyped, ContractHash, Key, PublicKey, RuntimeArgs, U256, U512,
@@ -50,7 +54,7 @@ impl DIDTestFixture {
             .named_keys()
             .get(CONTRACT_KEY_NAME)
             .unwrap()
-            .normidentityze()
+            .normalize()
             .into_hash()
             .unwrap()
             .into()
@@ -95,10 +99,15 @@ impl DIDTestFixture {
 
     pub fn owner(&self, identity: AccountHash) -> AccountHash {
         let owner_key = format!("owner_{}", identity.to_string());
-        self.query_contract(&owner_key).unwrap()
+        let owner_value : Option<AccountHash> = self.query_contract(&owner_key);
+        match owner_value {
+            // if return value is None, that mean that no value stored by this key
+            None => AccountHash::new([0u8;32]),
+            Some(owner_value) => owner_value
+        }
     }
 
-    pub fn changeOwner(&self, sender : AccountHash, identity : AccountHash, newOwner : AccountHash) {
+    pub fn changeOwner(&mut self, sender : AccountHash, identity : AccountHash, newOwner : AccountHash) {
         self.call(
             sender, 
             "changeOwner",

@@ -5,12 +5,12 @@ authors = ["Vakhtanh Chikhladze <vchikhladze@vareger.com>"]
 edition = "2018"
 
 [dev-dependencies]
-casper-engine-test-support = { version = "1.1.1" }
-casper-types = { version = "1.1.1" }
+casper-engine-test-support = { version = "=1.1.1" }
+casper-types = { version = "=1.1.1" }
 hex = "0.4.3"
 
 [[bin]]
 name = "did_tests"
-path = "did/src/did_tests.rs"
+path = "src/did_tests.rs"
 bench = false
 doctest = false
