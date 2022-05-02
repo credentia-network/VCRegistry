@@ -1,5 +1,6 @@
 #![allow(unused_imports)]
 #![allow(non_snake_case)]
+#![allow(dead_code)]
 
 use std::thread::AccessError;
 
@@ -85,18 +86,6 @@ impl DIDTestFixture {
         self.context.run(session);
     }
 
-    // pub fn balance_of(&self, account: Key) -> Option<U256> {
-    //     let item_key = base64::encode(&account.to_bytes().unwrap());
-
-    //     let key = Key::Hash(self.contract_hash().value());
-    //     let value = self
-    //         .context
-    //         .query_dictionary_item(key, Some(consts::BALANCES_KEY_NAME.to_string()), item_key)
-    //         .ok()?;
-
-    //     Some(value.into_t::<U256>().unwrap())
-    // }
-
     pub fn owner(&self, identity: AccountHash) -> AccountHash {
         let owner_key = format!("owner_{}", identity.to_string());
         let owner_value : Option<AccountHash> = self.query_contract(&owner_key);
@@ -107,7 +96,12 @@ impl DIDTestFixture {
         }
     }
 
-    pub fn changeOwner(&mut self, sender : AccountHash, identity : AccountHash, newOwner : AccountHash) {
+    pub fn changeOwner(
+        &mut self, 
+        sender : AccountHash, 
+        identity : AccountHash, 
+        newOwner : AccountHash
+    ) {
         self.call(
             sender, 
             "changeOwner",
@@ -118,17 +112,116 @@ impl DIDTestFixture {
         )
     }
 
-    // pub fn approve(&mut self, spender: Key, amount: U256, sender: AccountHash) {
-    //     self.call(
-    //         sender,
-    //         consts::APPROVE_ENTRY_POINT_NAME,
-    //         runtime_args! {
-    //             consts::SPENDER_RUNTIME_ARG_NAME => spender,
-    //             consts::AMOUNT_RUNTIME_ARG_NAME => amount
-    //         },
-    //     );
-    // }
+    pub fn delegate_length(&self, identity: AccountHash) -> u64 {
+        let delegate_length_key = format!("{}_delegateLength",identity);
+        let delegate_length : Option<u64> = self.query_contract(&delegate_length_key);
+        match delegate_length {
+            // if return value is None, that mean that no value stored by this key
+            None => 0,
+            Some(delegate_length) => delegate_length
+        }
+    }
 
+    pub fn delegate(&self, identity: AccountHash, index: u64) -> (String,String,u64) {
+        let delegate_key = format!("{}_delegate_{}",identity,index);
+        let delegate : Option<(String,String,u64)> = self.query_contract(&delegate_key);
+        match delegate {
+            // if return value is None, that mean that no value stored by this key
+            None => (String::from(""), String::from(""), 0),
+            Some(delegate) => delegate
+        }
+    }
 
+    pub fn addDelegate(
+        &mut self,
+        sender : AccountHash, 
+        identity : AccountHash, 
+        delegateKey : String,
+        delegateValue : String,
+        expire : u64
+    ) {
+        self.call(
+            sender, 
+            "addDelegate",
+            runtime_args! {
+                "identity" => identity,
+                "delegateKey" => delegateKey,
+                "delegateValue" => delegateValue,
+                "expire" => expire
+            }
+        )
+    }
+
+    pub fn revokeDelegate(
+        &mut self, 
+        sender : AccountHash, 
+        identity : AccountHash, 
+        index : u64
+    ) {
+        self.call(
+            sender, 
+            "revokeDelegate",
+            runtime_args! {
+                "identity" => identity,
+                "index" => index
+            }
+        )
+    }
+
+    pub fn attribute_length(&self, identity: AccountHash) -> u64 {
+        let attribute_length_key = format!("{}_attributeLength",identity);
+        let attribute_length : Option<u64> = self.query_contract(&attribute_length_key);
+        match attribute_length {
+            // if return value is None, that mean that no value stored by this key
+            None => 0,
+            Some(attribute_length) => attribute_length
+        }
+    }
+
+    pub fn attrubute(&self, identity: AccountHash, index: u64) -> (String,String,u64) {
+        let attrubute_key = format!("{}_attribute_{}", identity, index);
+        let attrubute : Option<(String,String,u64)> = self.query_contract(&attrubute_key);
+        match attrubute {
+            // if return value is None, that mean that no value stored by this key
+            None => (String::from(""), String::from(""), 0),
+            Some(attrubute) => attrubute
+        }
+    }
+
+    pub fn setAttribute(
+        &mut self,
+        sender : AccountHash, 
+        identity : AccountHash, 
+        attributeKey : String,
+        attributeValue : String,
+        expire : u64
+    ) {
+        self.call(
+            sender, 
+            "setAttribute",
+            runtime_args! {
+                "identity" => identity,
+                "attributeKey" => attributeKey,
+                "attributeValue" => attributeValue,
+                "expire" => expire
+            }
+        )
+    }
+
+    pub fn revokeAttribute(
+        &mut self,
+        sender : AccountHash, 
+        identity: AccountHash,
+        index : u64
+    ) {
+        self.call(
+            sender, 
+            "revokeAttribute",
+            runtime_args! {
+                "identity" => identity,
+                "index" => index
+            }
+        )
+    }
 
 }
