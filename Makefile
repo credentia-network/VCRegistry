@@ -7,7 +7,7 @@ build-contract:
 	
 test-only:
 	cargo test -p did_tests -- --nocapture --test-threads=1
-	# cargo test -p demovcregistry_tests -- --nocapture --test-threads=1
+	cargo test -p demovcregistry_tests -- --nocapture --test-threads=1
 
 copy-wasm-file-to-test:
 	cp target/wasm32-unknown-unknown/release/did.wasm tests/did/wasm
