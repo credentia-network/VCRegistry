@@ -126,8 +126,8 @@ pub extern "C" fn changeVPRequestStatus(){
     }
     
     let msgSender : AccountHash = runtime::get_caller();
-    if msgSender == verifier && newStatus == 3 {
-        set_key(vpRequestStatusKey, 3);
+    if msgSender == verifier && newStatus == 3u8 {
+        set_key(vpRequestStatusKey, 3u8);
         return;
     }
     let holder : AccountHash = get_key(&vprequest_key(&verifier, index, "holder"));
