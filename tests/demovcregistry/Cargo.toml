@@ -11,6 +11,6 @@ hex = "0.4.3"
 
 [[bin]]
 name = "demovcregistry_tests"
-path = "demovcregistry/src/demovcregistry_tests.rs"
+path = "src/demovcregistry_tests.rs"
 bench = false
 doctest = false
