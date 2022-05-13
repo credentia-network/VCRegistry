@@ -6,8 +6,8 @@ build-contract:
 	cargo +nightly build --release -p demovcregistry --target wasm32-unknown-unknown
 	
 test-only:
-	cargo test -p did_tests -- --nocapture --test-threads=1
-	cargo test -p demovcregistry_tests -- --nocapture --test-threads=1
+	cargo +nightly test -p did_tests -- --nocapture --test-threads=1
+	cargo +nightly test -p demovcregistry_tests -- --nocapture --test-threads=1
 
 copy-wasm-file-to-test:
 	cp target/wasm32-unknown-unknown/release/did.wasm tests/did/wasm
