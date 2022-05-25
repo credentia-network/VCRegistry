@@ -3,7 +3,11 @@
 members = [
     "contract/did",
     "contract/demovcregistry",
+]
 
+exclude = [
+    "tests/did",
+    "tests/demovcregistry",
 ]
 
 [profile.release]
